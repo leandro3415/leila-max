@@ -283,9 +283,10 @@
       <div class="filtro-periodo">
         <label for="periodo">Período dos gastos:</label>
         <select id="periodo">
-          <option value="30">Últimos 30 dias</option>
-          <option value="7">Últimos 7 dias</option>
-          <option value="90">Últimos 90 dias</option>
+          <option value="0" selected>Todo o período</option>
+          <option value="7">7 dias</option>
+          <option value="15">15 dias</option>
+          <option value="30">30 dias</option>
         </select>
       </div>
     </header>
@@ -442,9 +443,10 @@
       }
 
       const periodo = parseInt($('periodo').value, 10) || 30;
+      // Quando periodo é 0 = "Todo o período", não filtra por data (mostra todos os gastos)
       const dataInicio = new Date();
-      dataInicio.setDate(dataInicio.getDate() - periodo);
-      const dataInicioStr = dataInicio.toISOString().split('T')[0];
+      if (periodo > 0) dataInicio.setDate(dataInicio.getDate() - periodo);
+      const dataInicioStr = periodo > 0 ? dataInicio.toISOString().split('T')[0] : null;
 
       let gastos = [];
       let lembretes = [];
@@ -470,7 +472,7 @@
       }
       async function buscarComTimeout(fromTable, fromTableMaiusculo, opts) {
         let q = clientSupabase.from(fromTable).select(opts.select || '*');
-        if (opts.gte) q = q.gte('data', opts.gte);
+        if (opts.gte) q = q.gte('data', opts.gte); // só aplica filtro de data quando há período
         if (opts.order) q = q.order(opts.order.col, { ascending: opts.order.asc });
         const res = await Promise.race([q, timeoutPromise(timeoutMs)]);
         if (res && res.error && res.error.message && tabelaNaoEncontrada(res.error.message)) {
@@ -489,7 +491,7 @@
       // No Supabase/PostgreSQL as tabelas costumam estar em minúsculas (gastos, lembretes)
       try {
         gastos = await buscarComTimeout('gastos', 'Gastos', {
-          gte: dataInicioStr,
+          gte: dataInicioStr, // null quando "Todo o período" → não filtra, traz todos
           order: { col: 'data', asc: false }
         });
       } catch (e) {
