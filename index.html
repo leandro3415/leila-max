@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -71,6 +71,57 @@
     }
 
     .tagline { font-size: 0.9rem; color: var(--cinza-claro); opacity: 0.9; }
+
+    /* Menu de navegação rápida */
+    .nav-menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(135deg, rgba(15, 39, 68, 0.5) 0%, rgba(10, 22, 40, 0.7) 100%);
+      border: 1px solid rgba(77, 163, 255, 0.2);
+      border-radius: 14px;
+      justify-content: center;
+      align-items: stretch;
+    }
+    .nav-menu-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--cinza-claro);
+      text-decoration: none;
+      background: rgba(77, 163, 255, 0.1);
+      border: 1px solid rgba(77, 163, 255, 0.25);
+      border-radius: 10px;
+      transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.15s;
+      text-align: center;
+    }
+    .nav-menu-item:hover {
+      color: var(--branco);
+      background: rgba(77, 163, 255, 0.25);
+      border-color: rgba(77, 163, 255, 0.45);
+      transform: translateY(-2px);
+    }
+    .nav-menu-item:focus {
+      outline: none;
+      border-color: var(--azul-brilho);
+      box-shadow: 0 0 0 2px rgba(77, 163, 255, 0.3);
+    }
+    .nav-menu-item.ativo {
+      color: var(--branco);
+      background: rgba(77, 163, 255, 0.3);
+      border-color: var(--azul-destaque);
+    }
+    .nav-menu-item {
+      -webkit-tap-highlight-color: rgba(77, 163, 255, 0.25);
+      touch-action: manipulation;
+    }
+    html { scroll-behavior: smooth; }
 
     .filtro-periodo {
       display: flex;
@@ -157,6 +208,63 @@
       background-clip: text;
     }
 
+    .card-desc {
+      font-size: 0.7rem;
+      color: var(--cinza-claro);
+      opacity: 0.85;
+      margin-top: 0.25rem;
+    }
+
+    .badge-pago {
+      display: inline-block;
+      background: rgba(125, 211, 160, 0.25);
+      color: #7dd3a0;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .btn-pago, .btn-apagar, .btn-alterar {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      font-weight: 600;
+    }
+
+    .btn-pago {
+      background: rgba(45, 125, 210, 0.6);
+      color: var(--branco);
+    }
+    .btn-pago:hover { background: var(--azul-destaque); }
+
+    .btn-apagar {
+      background: rgba(200, 80, 80, 0.4);
+      color: #ffb3b3;
+    }
+    .btn-apagar:hover { background: rgba(200, 80, 80, 0.7); }
+
+    .btn-alterar {
+      background: rgba(77, 163, 255, 0.35);
+      color: var(--branco);
+    }
+    .btn-alterar:hover { background: var(--azul-destaque); }
+
+    .acoes-celula {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+    .acoes-celula .btn-pago,
+    .acoes-celula .btn-alterar,
+    .acoes-celula .btn-apagar {
+      white-space: nowrap;
+    }
+
     /* Grid de gráficos */
     .grid-charts {
       display: grid;
@@ -196,6 +304,89 @@
       align-items: center;
       gap: 0.5rem;
     }
+    .section-header-gastos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .section-header-gastos .section-title {
+      margin-bottom: 0;
+    }
+    .filtros-gastos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .filtro-btn {
+      padding: 0.45rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .filtro-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .filtro-btn.ativo { opacity: 1; }
+    .filtro-pagos {
+      background: rgba(125, 211, 160, 0.25);
+      color: #7dd3a0;
+      border: 1px solid rgba(125, 211, 160, 0.4);
+    }
+    .filtro-pagos.ativo {
+      background: rgba(125, 211, 160, 0.45);
+      color: #7dd3a0;
+      border-color: #7dd3a0;
+    }
+    .filtro-pendentes {
+      background: rgba(255, 201, 102, 0.25);
+      color: #ffc966;
+      border: 1px solid rgba(255, 201, 102, 0.4);
+    }
+    .filtro-pendentes.ativo {
+      background: rgba(255, 201, 102, 0.45);
+      color: #ffc966;
+      border-color: #ffc966;
+    }
+    .filtro-lupa {
+      background: rgba(77, 163, 255, 0.25);
+      color: var(--azul-brilho);
+      border: 1px solid rgba(77, 163, 255, 0.4);
+      padding: 0.45rem 0.65rem;
+      font-size: 1rem;
+      line-height: 1;
+    }
+    .filtro-lupa.ativo,
+    .filtro-lupa:hover {
+      background: rgba(77, 163, 255, 0.4);
+      border-color: var(--azul-brilho);
+    }
+    .filtro-search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .filtro-input {
+      width: 120px;
+      padding: 0.45rem 0.65rem;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      border: 1px solid rgba(77, 163, 255, 0.35);
+      background: rgba(5, 10, 18, 0.6);
+      color: var(--branco);
+      font-family: inherit;
+      transition: width 0.2s;
+    }
+    .filtro-input:focus {
+      outline: none;
+      border-color: var(--azul-brilho);
+    }
+    .filtro-input::placeholder { color: var(--cinza-claro); opacity: 0.8; }
 
     .tabela-box {
       background: linear-gradient(135deg, rgba(15, 39, 68, 0.6) 0%, rgba(10, 22, 40, 0.8) 100%);
@@ -267,6 +458,251 @@
       opacity: 0.7;
     }
 
+    /* Botão adicionar saldo */
+    .card-saldo-wrap {
+      position: relative;
+    }
+    .btn-adicionar-saldo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      background: rgba(125, 211, 160, 0.25);
+      color: #7dd3a0;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-adicionar-saldo:hover {
+      background: rgba(125, 211, 160, 0.4);
+    }
+    .btn-adicionar-saldo:active {
+      transform: scale(0.98);
+    }
+
+    /* Modal adicionar saldo */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 10, 18, 0.85);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.ativo {
+      display: flex;
+    }
+    .modal-saldo {
+      background: linear-gradient(135deg, rgba(15, 39, 68, 0.95) 0%, rgba(10, 22, 40, 0.98) 100%);
+      border: 1px solid rgba(77, 163, 255, 0.3);
+      border-radius: 16px;
+      padding: 1.5rem;
+      max-width: 360px;
+      width: 100%;
+    }
+    .modal-saldo h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--branco);
+    }
+    .modal-saldo label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--cinza-claro);
+      margin-bottom: 0.35rem;
+    }
+    .modal-saldo input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(77, 163, 255, 0.3);
+      background: rgba(5, 10, 18, 0.6);
+      color: var(--branco);
+      font-size: 1.1rem;
+      font-family: inherit;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    }
+    .modal-saldo input::placeholder {
+      color: var(--cinza-claro);
+      opacity: 0.7;
+    }
+    .modal-saldo input:focus {
+      outline: none;
+      border-color: var(--azul-brilho);
+    }
+    .modal-botoes {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .modal-botoes button {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      border: none;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .btn-modal-confirmar {
+      background: linear-gradient(135deg, var(--azul-destaque), var(--azul-claro));
+      color: var(--branco);
+    }
+    .btn-modal-cancelar {
+      background: rgba(255,255,255,0.1);
+      color: var(--cinza-claro);
+    }
+
+    /* Modal editar (gasto/lembrete) - reutiliza estilo base */
+    .modal-editar .modal-botoes { margin-top: 1.25rem; }
+
+    /* Responsivo mobile */
+    @media (max-width: 767px) {
+      .container { padding: 0.75rem 1rem; }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.75rem 0 1rem;
+      }
+      .logo { font-size: 1.5rem; }
+      .tagline { font-size: 0.8rem; }
+      .filtro-periodo { width: 100%; }
+      .filtro-periodo select {
+        flex: 1;
+        min-width: 0;
+        padding: 0.6rem 0.75rem;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+      .card {
+        padding: 1rem;
+      }
+      .card-value { font-size: 1.4rem; }
+      .card-label { font-size: 0.8rem; }
+      .card-desc { font-size: 0.65rem; }
+      .grid-charts {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .chart-box { padding: 1rem; }
+      .chart-wrap { height: 220px; }
+      .chart-box h3 { font-size: 0.95rem; }
+      .section-title { font-size: 1.05rem; margin-bottom: 0.75rem; }
+      .section-header-gastos { gap: 0.5rem; margin-bottom: 0.75rem; }
+      .filtros-gastos { gap: 0.4rem; }
+      .filtro-btn { padding: 0.4rem 0.65rem; font-size: 0.8rem; }
+      .filtro-input { width: 100px; max-width: 140px; }
+      /* Tabelas viram cards no mobile: sem rolagem horizontal */
+      .tabela-box {
+        padding: 0.75rem 0;
+        margin-bottom: 1rem;
+        overflow-x: visible;
+      }
+      .tabela-box table {
+        min-width: 0;
+        width: 100%;
+        font-size: 0.9rem;
+      }
+      .tabela-box thead { display: none; }
+      .tabela-box tbody,
+      .tabela-box tr,
+      .tabela-box td { display: block; }
+      .tabela-box tr {
+        background: linear-gradient(135deg, rgba(15, 39, 68, 0.5) 0%, rgba(10, 22, 40, 0.7) 100%);
+        border: 1px solid rgba(77, 163, 255, 0.2);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+      }
+      .tabela-box tr:last-child { margin-bottom: 0; }
+      .tabela-box td {
+        padding: 0.4rem 0;
+        border: none;
+        white-space: normal;
+      }
+      .tabela-box td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        font-size: 0.75rem;
+        color: var(--cinza-claro);
+        display: inline-block;
+        min-width: 5.5rem;
+        margin-right: 0.5rem;
+      }
+      .tabela-box td.td-acoes {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(77, 163, 255, 0.2);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .tabela-box td.td-acoes::before {
+        display: block;
+        margin-bottom: 0.25rem;
+        width: 100%;
+        min-width: 0;
+      }
+      .tabela-box td.td-acoes .acoes-celula {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      /* Menu sempre em uma linha no mobile, os 3 itens lado a lado */
+      .nav-menu {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.4rem;
+        padding: 0.5rem 0.5rem;
+        margin-bottom: 1.25rem;
+        justify-content: space-between;
+        min-width: 0;
+      }
+      .nav-menu-item {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 0.5rem 0.35rem;
+        font-size: 0.7rem;
+        line-height: 1.2;
+        white-space: normal;
+        word-break: break-word;
+      }
+      .btn-pago, .btn-apagar, .btn-alterar {
+        min-height: 38px;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+      }
+      .acoes-celula { gap: 0.35rem; }
+      .btn-adicionar-saldo {
+        min-height: 44px;
+        padding: 0.6rem 1rem;
+      }
+      .modal-saldo { padding: 1.25rem; }
+      .modal-botoes button { min-height: 44px; }
+    }
+
+    /* Mobile muito estreito: menu ainda mais compacto para os 3 caberem */
+    @media (max-width: 400px) {
+      .nav-menu { gap: 0.25rem; padding: 0.45rem 0.4rem; }
+      .nav-menu-item { font-size: 0.65rem; padding: 0.45rem 0.25rem; }
+      .container { padding: 0.5rem 0.75rem; }
+    }
+
     @media (min-width: 768px) {
       .container { padding: 2rem; }
       .grid-charts { grid-template-columns: 1fr 1fr; }
@@ -307,6 +743,11 @@
     </div>
     <div id="loading" class="loading-msg">Carregando dados…</div>
     <div id="conteudo" style="display: none;">
+      <nav class="nav-menu" aria-label="Navegação do painel">
+        <a href="#secao-categorias" class="nav-menu-item" data-secao="secao-categorias">📊 Gastos por categoria</a>
+        <a href="#secao-ultimos-gastos" class="nav-menu-item" data-secao="secao-ultimos-gastos">💰 Últimos gastos</a>
+        <a href="#secao-proximos-lembretes" class="nav-menu-item" data-secao="secao-proximos-lembretes">📅 Lembretes</a>
+      </nav>
       <section class="cards">
         <div class="card">
           <div class="card-icon">💰</div>
@@ -317,6 +758,25 @@
           <div class="card-icon">📋</div>
           <div class="card-label">Quantidade de gastos</div>
           <div class="card-value" id="qtd-gastos">0</div>
+        </div>
+        <div class="card card-saldo-wrap">
+          <div class="card-icon">💵</div>
+          <div class="card-label">Saldo disponível</div>
+          <div class="card-value" id="saldo-disponivel">R$ 0,00</div>
+          <div class="card-desc">Ao marcar gasto como pago, o valor é descontado daqui.</div>
+          <button type="button" class="btn-adicionar-saldo" id="btn-adicionar-saldo" aria-label="Adicionar saldo">➕ Adicionar saldo</button>
+        </div>
+        <div class="card">
+          <div class="card-icon">✅</div>
+          <div class="card-label">Gastos pagos</div>
+          <div class="card-value" id="gastos-pagos">R$ 0,00</div>
+          <div class="card-desc">Soma dos gastos já marcados como pagos.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⏸</div>
+          <div class="card-label">Gastos pendentes</div>
+          <div class="card-value" id="gastos-pendentes">R$ 0,00</div>
+          <div class="card-desc">Soma dos gastos registrados ainda não pagos.</div>
         </div>
         <div class="card">
           <div class="card-icon">📅</div>
@@ -330,7 +790,7 @@
         </div>
       </section>
 
-      <section class="grid-charts">
+      <section class="grid-charts" id="secao-categorias">
         <div class="chart-box">
           <h3>📊 Gastos por categoria</h3>
           <div class="chart-wrap">
@@ -360,8 +820,18 @@
         </div>
       </section>
 
-      <section>
-        <h2 class="section-title">💰 Últimos gastos</h2>
+      <section id="secao-ultimos-gastos">
+        <div class="section-header-gastos">
+          <h2 class="section-title">💰 Últimos gastos</h2>
+          <div class="filtros-gastos">
+            <button type="button" class="filtro-btn filtro-pagos" id="filtro-pagos" aria-pressed="false">Pagos</button>
+            <button type="button" class="filtro-btn filtro-pendentes" id="filtro-pendentes" aria-pressed="false">Pendentes</button>
+            <div class="filtro-search-wrap">
+              <input type="text" id="busca-gastos" class="filtro-input" placeholder="Buscar..." autocomplete="off" style="display: none;">
+              <button type="button" class="filtro-btn filtro-lupa" id="filtro-lupa" aria-label="Buscar gastos" title="Buscar">🔍</button>
+            </div>
+          </div>
+        </div>
         <div class="tabela-box">
           <table>
             <thead>
@@ -370,6 +840,8 @@
                 <th>Descrição</th>
                 <th>Categoria</th>
                 <th>Valor</th>
+                <th>Status</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody id="tbody-gastos"></tbody>
@@ -378,8 +850,18 @@
         </div>
       </section>
 
-      <section>
-        <h2 class="section-title">📅 Próximos lembretes</h2>
+      <section id="secao-proximos-lembretes">
+        <div class="section-header-gastos section-header-lembretes">
+          <h2 class="section-title">📅 Lembretes</h2>
+          <div class="filtros-gastos filtros-lembretes">
+            <button type="button" class="filtro-btn filtro-pagos" id="filtro-notificados-lemb" aria-pressed="false">Notificados</button>
+            <button type="button" class="filtro-btn filtro-pendentes" id="filtro-pendentes-lemb" aria-pressed="false">Pendentes</button>
+            <div class="filtro-search-wrap">
+              <input type="text" id="busca-lembretes" class="filtro-input" placeholder="Buscar..." autocomplete="off" style="display: none;">
+              <button type="button" class="filtro-btn filtro-lupa" id="filtro-lupa-lemb" aria-label="Buscar lembretes" title="Buscar">🔍</button>
+            </div>
+          </div>
+        </div>
         <div class="tabela-box">
           <table>
             <thead>
@@ -388,6 +870,7 @@
                 <th>Hora</th>
                 <th>Título</th>
                 <th>Status</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody id="tbody-lembretes"></tbody>
@@ -398,6 +881,57 @@
     </div>
 
     <footer>FinLeve — Controle de gastos e lembretes.</footer>
+  </div>
+
+  <!-- Modal Adicionar saldo -->
+  <div id="modal-saldo-overlay" class="modal-overlay" role="dialog" aria-labelledby="modal-saldo-titulo" aria-modal="true">
+    <div class="modal-saldo">
+      <h3 id="modal-saldo-titulo">Adicionar saldo disponível</h3>
+      <label for="input-valor-saldo">Valor a adicionar (R$)</label>
+      <input type="text" id="input-valor-saldo" inputmode="decimal" placeholder="Ex: 100,00" autocomplete="off">
+      <div class="modal-botoes">
+        <button type="button" class="btn-modal-cancelar" id="btn-modal-saldo-cancelar">Cancelar</button>
+        <button type="button" class="btn-modal-confirmar" id="btn-modal-saldo-confirmar">Adicionar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Editar gasto -->
+  <div id="modal-editar-gasto-overlay" class="modal-overlay" role="dialog" aria-labelledby="modal-editar-gasto-titulo" aria-modal="true">
+    <div class="modal-saldo modal-editar">
+      <h3 id="modal-editar-gasto-titulo">Alterar gasto</h3>
+      <input type="hidden" id="editar-gasto-id">
+      <label for="editar-gasto-data">Data</label>
+      <input type="date" id="editar-gasto-data">
+      <label for="editar-gasto-descricao">Descrição</label>
+      <input type="text" id="editar-gasto-descricao" placeholder="Ex: Supermercado" maxlength="200">
+      <label for="editar-gasto-categoria">Categoria</label>
+      <input type="text" id="editar-gasto-categoria" placeholder="Ex: Alimentação" maxlength="80">
+      <label for="editar-gasto-valor">Valor (R$)</label>
+      <input type="text" id="editar-gasto-valor" inputmode="decimal" placeholder="Ex: 150,00">
+      <div class="modal-botoes">
+        <button type="button" class="btn-modal-cancelar" id="btn-editar-gasto-cancelar">Cancelar</button>
+        <button type="button" class="btn-modal-confirmar" id="btn-editar-gasto-confirmar">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Editar lembrete -->
+  <div id="modal-editar-lembrete-overlay" class="modal-overlay" role="dialog" aria-labelledby="modal-editar-lembrete-titulo" aria-modal="true">
+    <div class="modal-saldo modal-editar">
+      <h3 id="modal-editar-lembrete-titulo">Alterar lembrete</h3>
+      <input type="hidden" id="editar-lembrete-id">
+      <label for="editar-lembrete-data">Data</label>
+      <input type="date" id="editar-lembrete-data">
+      <label for="editar-lembrete-hora">Hora</label>
+      <input type="text" id="editar-lembrete-hora" placeholder="HH:MM" maxlength="5">
+      <label for="editar-lembrete-titulo">Título</label>
+      <input type="text" id="editar-lembrete-titulo" placeholder="Ex: Pagar conta" maxlength="200">
+      <div class="modal-botoes">
+        <button type="button" class="btn-modal-cancelar" id="btn-editar-lembrete-cancelar">Cancelar</button>
+        <button type="button" class="btn-modal-confirmar" id="btn-editar-lembrete-confirmar">Salvar</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -412,6 +946,26 @@
     let chartMeses = null;
     let chartLembretes = null;
     let chartLembretesMes = null;
+
+    // Filtros da seção Últimos gastos
+    let _gastosAtuais = [];
+    let _lembretesAtuais = [];
+    let filtroGastosStatus = 'todos'; // 'todos' | 'pagos' | 'pendentes'
+    let filtroGastosTexto = '';
+    let filtroLembretesStatus = 'todos'; // 'todos' | 'notificados' | 'pendentes'
+    let filtroLembretesTexto = '';
+
+    // Linha de resumo na tabela Gastos (guarda saldo, gastos pagos, gastos pendentes)
+    const DESC_RESUMO_GASTOS = '__RESUMO__';
+    // Tabela no Supabase: "Gastos". Colunas de resumo: "SALDO DISPONÍVEL", "GASTOS PAGOS", "GASTOS PENDENTES". Status: "pago" ou "Pago".
+    const COL_SALDO = 'saldo_disponivel';
+    const COL_GASTOS_PAGOS = 'gastos_pagos';
+    const COL_GASTOS_PENDENTES = 'gastos_pendentes';
+
+    function isPago(g) {
+      if (!g) return false;
+      return g.pago === true || g.Pago === true || g.pago === 'true' || g.Pago === 'true';
+    }
 
     function formatarMoeda(n) {
       return 'R$ ' + Number(n).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -469,7 +1023,7 @@
         if (typeof window.supabase === 'undefined') {
           throw new Error('Script do Supabase não carregou. Verifique a internet ou bloqueadores.');
         }
-        clientSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        if (!clientSupabase) clientSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
       } catch (e) {
         mostrarErro('Erro ao conectar ao Supabase: ' + e.message);
         return;
@@ -483,10 +1037,11 @@
 
       let gastos = [];
       let lembretes = [];
+      let perfil = { saldo_disponivel: 0 };
 
       // Teste rápido: primeiro select para ver resposta no console (F12)
       try {
-        const testRes = await clientSupabase.from('gastos').select('*').limit(1);
+        const testRes = await clientSupabase.from('Gastos').select('*').limit(1);
         console.log('FinLeve – teste gastos:', testRes.error ? { error: testRes.error.message, code: testRes.error.code } : { ok: true, count: (testRes.data && testRes.data.length) });
       } catch (e) {
         console.warn('FinLeve – teste gastos falhou:', e);
@@ -503,22 +1058,20 @@
         const m = msg.toLowerCase();
         return m.includes('does not exist') || m.includes('could not find the table') || m.includes('schema cache');
       }
-      // Filtro por usuário: aceita um valor (eq) ou array para .or (ex.: número e número@s.whatsapp.net)
-      const celularFilter = userId.includes('@')
-        ? { eq: userId }
-        : { or: [userId, userId + '@s.whatsapp.net'] };
+      // Filtro por usuário: valores possíveis do celular (número e número@s.whatsapp.net)
+      const celularValores = userId.includes('@')
+        ? [userId]
+        : [userId, userId + '@s.whatsapp.net'];
 
       async function buscarComTimeout(fromTable, fromTableMaiusculo, opts) {
         let q = clientSupabase.from(fromTable).select(opts.select || '*');
-        if (opts.celularEq) q = q.eq('celular', opts.celularEq);
-        if (opts.celularOr && opts.celularOr.length) q = q.or(opts.celularOr.map(v => 'celular.eq.' + v).join(','));
-        if (opts.gte) q = q.gte('data', opts.gte); // só aplica filtro de data quando há período
+        if (opts.celularIn && opts.celularIn.length) q = q.in('celular', opts.celularIn);
+        if (opts.gte) q = q.gte('data', opts.gte);
         if (opts.order) q = q.order(opts.order.col, { ascending: opts.order.asc });
         const res = await Promise.race([q, timeoutPromise(timeoutMs)]);
         if (res && res.error && res.error.message && tabelaNaoEncontrada(res.error.message)) {
           let q2 = clientSupabase.from(fromTableMaiusculo).select(opts.select || '*');
-          if (opts.celularEq) q2 = q2.eq('celular', opts.celularEq);
-          if (opts.celularOr && opts.celularOr.length) q2 = q2.or(opts.celularOr.map(v => 'celular.eq.' + v).join(','));
+          if (opts.celularIn && opts.celularIn.length) q2 = q2.in('celular', opts.celularIn);
           if (opts.gte) q2 = q2.gte('data', opts.gte);
           if (opts.order) q2 = q2.order(opts.order.col, { ascending: opts.order.asc });
           const res2 = await Promise.race([q2, timeoutPromise(timeoutMs)]);
@@ -526,19 +1079,72 @@
           return (res2 && res2.data) ? res2.data : [];
         }
         if (res && res.error) throw new Error(res.error.message);
-        if (res && Array.isArray(res)) return res; // timeout retorna rejeição, não resultado
+        if (res && Array.isArray(res)) return res;
         return (res && res.data) ? res.data : [];
       }
 
-      // No Supabase/PostgreSQL as tabelas costumam estar em minúsculas (gastos, lembretes)
-      const optsGastos = {
-        gte: dataInicioStr,
-        order: { col: 'data', asc: false }
-      };
-      if (celularFilter.eq) optsGastos.celularEq = celularFilter.eq;
-      else if (celularFilter.or) optsGastos.celularOr = celularFilter.or;
+      // Extrai só os dígitos do número (ignora @s.whatsapp.net, espaços, etc.)
+      function soDigitos(s) {
+        if (s == null) return '';
+        return String(s).replace(/\D/g, '');
+      }
+
+      // Gastos: busca em Gastos primeiro (nome no Supabase); fallback em "gastos" se existir
+      async function buscarDeUmaTabela(nomeTabela) {
+        let q = clientSupabase.from(nomeTabela).select('*');
+        if (dataInicioStr) q = q.gte('data', dataInicioStr);
+        q = q.order('data', { ascending: false }).range(0, 4999);
+        const res = await Promise.race([q, timeoutPromise(timeoutMs)]);
+        if (res && res.error) return { error: res.error.message, data: [] };
+        return { data: (res && res.data) ? res.data : [] };
+      }
+
+      function chaveGasto(g) {
+        const id = g.id != null ? String(g.id) : '';
+        const data = String(g.data || '');
+        const cel = soDigitos(g.celular != null ? g.celular : g.Celular);
+        const val = String(g.valor_total != null ? g.valor_total : g.valor || '');
+        return id || (data + '|' + cel + '|' + val);
+      }
+
+      async function buscarGastosComTodosCelulares() {
+        const userIdDigitos = soDigitos(userId);
+        const ehDoUsuario = (g) => {
+          const c = g.celular != null ? g.celular : (g.Celular != null ? g.Celular : '');
+          const dig = soDigitos(c);
+          if (!userIdDigitos) return false;
+          if (!dig) return false;
+          return dig === userIdDigitos || dig.endsWith(userIdDigitos) || userIdDigitos.endsWith(dig);
+        };
+
+        let lista = [];
+        const visto = new Set();
+
+        for (const nomeTabela of ['Gastos']) {
+          const r = await buscarDeUmaTabela(nomeTabela);
+          if (r.error && lista.length === 0 && tabelaNaoEncontrada(r.error)) continue;
+          if (r.error && lista.length > 0) continue;
+          if (r.error) throw new Error(r.error);
+          if (r.data && r.data.length) {
+            for (const g of r.data) {
+              const k = chaveGasto(g);
+              if (visto.has(k)) continue;
+              visto.add(k);
+              lista.push(g);
+            }
+          }
+        }
+
+        const filtrados = lista.filter(ehDoUsuario);
+        console.log('FinLeve – gastos: total da API =', lista.length, ', após filtro do usuário =', filtrados.length);
+        let resultado = dataInicioStr
+          ? filtrados.filter((g) => String(g.data || '') >= dataInicioStr).sort((a, b) => String(b.data || '').localeCompare(String(a.data || '')))
+          : filtrados.sort((a, b) => String(b.data || '').localeCompare(String(a.data || '')));
+        return resultado;
+      }
+
       try {
-        gastos = await buscarComTimeout('gastos', 'Gastos', optsGastos);
+        gastos = await buscarGastosComTodosCelulares();
       } catch (e) {
         const msg = e.message === 'timeout'
           ? 'Demorou muito (timeout). Verifique a URL/chave do Supabase, a conexão e as políticas RLS (SELECT para anon).'
@@ -547,11 +1153,13 @@
         return;
       }
 
-      const optsLembretes = { order: { col: 'data', asc: true } };
-      if (celularFilter.eq) optsLembretes.celularEq = celularFilter.eq;
-      else if (celularFilter.or) optsLembretes.celularOr = celularFilter.or;
+      // Linha de resumo na tabela Gastos (guarda saldo, gastos pagos, gastos pendentes) — não exibir na lista
+      const resumoRow = gastos.find(g => String(g.descricao || '').trim() === DESC_RESUMO_GASTOS);
+      gastos = gastos.filter(g => String(g.descricao || '').trim() !== DESC_RESUMO_GASTOS);
+
+      const optsLembretes = { order: { col: 'data', asc: true }, celularIn: celularValores };
       try {
-        lembretes = await buscarComTimeout('lembretes', 'Lembretes', optsLembretes);
+        lembretes = await buscarComTimeout('Lembretes', 'lembretes', optsLembretes);
       } catch (e) {
         const msg = e.message === 'timeout'
           ? 'Demorou muito (timeout) ao buscar lembretes. Verifique políticas RLS (SELECT para anon).'
@@ -560,20 +1168,100 @@
         return;
       }
 
+      // Saldo disponível: só na tabela Gastos (linha de resumo). Não existe tabela Perfil.
+      const celularPerfil = userId.includes('@') ? [userId] : [userId, userId + '@s.whatsapp.net'];
+      if (resumoRow) {
+        const v = resumoRow[COL_SALDO] ?? resumoRow['SALDO DISPONÍVEL'];
+        if (v != null) perfil.saldo_disponivel = Number(v) || 0;
+      }
+
+      window._userId = userId;
+
+      // Calcular gastos pagos e pendentes e salvar na tabela Gastos (linha de resumo)
+      const gastosPagosVal = gastos.filter(g => isPago(g)).reduce((s, g) => s + valorGasto(g), 0);
+      const gastosPendVal = gastos.filter(g => !isPago(g)).reduce((s, g) => s + valorGasto(g), 0);
+      const saldoParaSalvar = (perfil && perfil.saldo_disponivel != null) ? Number(perfil.saldo_disponivel) : 0;
+      try {
+        await salvarResumoGastos(clientSupabase, userId, celularPerfil, resumoRow, saldoParaSalvar, gastosPagosVal, gastosPendVal);
+      } catch (e) {
+        console.warn('FinLeve – aviso ao salvar resumo em Gastos:', e);
+      }
+
       $('loading').style.display = 'none';
       if ($('aviso-sem-id')) $('aviso-sem-id').style.display = 'none';
       $('erro').style.display = 'none';
       $('conteudo').style.display = 'block';
 
-      renderizarResumo(gastos, lembretes);
+      _gastosAtuais = gastos;
+      _lembretesAtuais = lembretes;
+      renderizarResumo(gastos, lembretes, perfil);
       renderizarGraficos(gastos, lembretes);
-      renderizarTabelas(gastos, lembretes);
+      aplicarFiltroGastos();
     }
 
-    function renderizarResumo(gastos, lembretes) {
-      const total = gastos.reduce((s, g) => s + (Number(g.valor_total) || 0), 0);
+    function valorGasto(g) {
+      return Number(g.valor_total != null ? g.valor_total : g.valor) || 0;
+    }
+
+    // Salva saldo, gastos pagos e gastos pendentes na tabela Gastos (linha de resumo por usuário).
+    // No Supabase a tabela Gastos usa colunas com espaço: "SALDO DISPONÍVEL", "GASTOS PAGOS", "GASTOS PENDENTES".
+    async function salvarResumoGastos(client, userId, celularPerfil, resumoRow, saldo, gastosPagos, gastosPendentes) {
+      const payloadSpace = {
+        'SALDO DISPONÍVEL': String(saldo),
+        'GASTOS PAGOS': String(gastosPagos),
+        'GASTOS PENDENTES': String(gastosPendentes)
+      };
+      const payloadSnake = {
+        [COL_SALDO]: saldo,
+        [COL_GASTOS_PAGOS]: gastosPagos,
+        [COL_GASTOS_PENDENTES]: gastosPendentes
+      };
+      const hoje = new Date().toISOString().split('T')[0];
+      if (resumoRow && resumoRow.id) {
+        for (const tbl of ['Gastos']) {
+          let r = await client.from(tbl).update(payloadSpace).eq('id', resumoRow.id).select();
+          if (r && r.error && (r.error.message || '').toLowerCase().includes('column')) {
+            r = await client.from(tbl).update(payloadSnake).eq('id', resumoRow.id).select();
+          }
+          if (r && !r.error) return;
+        }
+      } else {
+        const insertRowSpace = {
+          celular: userId,
+          data: hoje,
+          descricao: DESC_RESUMO_GASTOS,
+          valor_total: 0,
+          'SALDO DISPONÍVEL': String(saldo),
+          'GASTOS PAGOS': String(gastosPagos),
+          'GASTOS PENDENTES': String(gastosPendentes)
+        };
+        const insertRowSnake = {
+          celular: userId,
+          data: hoje,
+          descricao: DESC_RESUMO_GASTOS,
+          valor_total: 0,
+          ...payloadSnake
+        };
+        for (const tbl of ['Gastos']) {
+          let r = await client.from(tbl).insert(insertRowSpace).select();
+          if (r && r.error && (r.error.message || '').toLowerCase().includes('column')) {
+            r = await client.from(tbl).insert(insertRowSnake).select();
+          }
+          if (r && !r.error) return;
+        }
+      }
+    }
+
+    function renderizarResumo(gastos, lembretes, perfil) {
+      const total = gastos.reduce((s, g) => s + valorGasto(g), 0);
       $('total-gastos').textContent = formatarMoeda(total);
       $('qtd-gastos').textContent = gastos.length;
+      const saldo = (perfil && perfil.saldo_disponivel != null) ? Number(perfil.saldo_disponivel) : 0;
+      $('saldo-disponivel').textContent = formatarMoeda(saldo);
+      const gastosPagos = gastos.filter(g => isPago(g)).reduce((s, g) => s + valorGasto(g), 0);
+      const gastosPend = gastos.filter(g => !isPago(g)).reduce((s, g) => s + valorGasto(g), 0);
+      $('gastos-pagos').textContent = formatarMoeda(gastosPagos);
+      $('gastos-pendentes').textContent = formatarMoeda(gastosPend);
       $('total-lembretes').textContent = lembretes.length;
       const pendentes = lembretes.filter(l => !l.notificado).length;
       $('lembretes-pendentes').textContent = pendentes;
@@ -601,7 +1289,7 @@
       const porCategoria = {};
       gastos.forEach(g => {
         const c = (g.categoria || 'Outros').trim();
-        porCategoria[c] = (porCategoria[c] || 0) + (Number(g.valor_total) || 0);
+        porCategoria[c] = (porCategoria[c] || 0) + valorGasto(g);
       });
       const labelsCat = Object.keys(porCategoria);
       const valuesCat = labelsCat.map(c => porCategoria[c]);
@@ -623,7 +1311,7 @@
       const porMes = {};
       gastos.forEach(g => {
         const d = (g.data || '').toString().slice(0, 7);
-        if (d) porMes[d] = (porMes[d] || 0) + (Number(g.valor_total) || 0);
+        if (d) porMes[d] = (porMes[d] || 0) + valorGasto(g);
       });
       const mesesOrdenados = Object.keys(porMes).sort();
       const labelsMes = mesesOrdenados.map(m => {
@@ -695,6 +1383,67 @@
       });
     }
 
+    function filtrarGastosPorFiltro(gastos) {
+      const texto = filtroGastosTexto.toLowerCase().trim();
+      return gastos.filter(g => {
+        const pago = isPago(g);
+        if (filtroGastosStatus === 'pagos' && !pago) return false;
+        if (filtroGastosStatus === 'pendentes' && pago) return false;
+        if (texto) {
+          const desc = (g.descricao || '').toLowerCase();
+          const cat = (g.categoria || '').toLowerCase();
+          if (!desc.includes(texto) && !cat.includes(texto)) return false;
+        }
+        return true;
+      });
+    }
+
+    function aplicarFiltroGastos() {
+      const filtradosG = filtrarGastosPorFiltro(_gastosAtuais);
+      const filtradosL = filtrarLembretesPorFiltro(_lembretesAtuais);
+      renderizarTabelas(filtradosG, filtradosL);
+      const btnPagos = $('filtro-pagos');
+      const btnPendentes = $('filtro-pendentes');
+      if (btnPagos) {
+        btnPagos.classList.toggle('ativo', filtroGastosStatus === 'pagos');
+        btnPagos.setAttribute('aria-pressed', filtroGastosStatus === 'pagos');
+      }
+      if (btnPendentes) {
+        btnPendentes.classList.toggle('ativo', filtroGastosStatus === 'pendentes');
+        btnPendentes.setAttribute('aria-pressed', filtroGastosStatus === 'pendentes');
+      }
+    }
+
+    function filtrarLembretesPorFiltro(lembretes) {
+      const texto = filtroLembretesTexto.toLowerCase().trim();
+      return lembretes.filter(l => {
+        const notif = !!l.notificado;
+        if (filtroLembretesStatus === 'notificados' && !notif) return false;
+        if (filtroLembretesStatus === 'pendentes' && notif) return false;
+        if (texto) {
+          const tit = (l.titulo || '').toLowerCase();
+          if (!tit.includes(texto)) return false;
+        }
+        return true;
+      });
+    }
+
+    function aplicarFiltroLembretes() {
+      const filtradosG = filtrarGastosPorFiltro(_gastosAtuais);
+      const filtradosL = filtrarLembretesPorFiltro(_lembretesAtuais);
+      renderizarTabelas(filtradosG, filtradosL);
+      const btnNotif = $('filtro-notificados-lemb');
+      const btnPend = $('filtro-pendentes-lemb');
+      if (btnNotif) {
+        btnNotif.classList.toggle('ativo', filtroLembretesStatus === 'notificados');
+        btnNotif.setAttribute('aria-pressed', filtroLembretesStatus === 'notificados');
+      }
+      if (btnPend) {
+        btnPend.classList.toggle('ativo', filtroLembretesStatus === 'pendentes');
+        btnPend.setAttribute('aria-pressed', filtroLembretesStatus === 'pendentes');
+      }
+    }
+
     function renderizarTabelas(gastos, lembretes) {
       const tbodyG = $('tbody-gastos');
       const emptyG = $('empty-gastos');
@@ -705,13 +1454,45 @@
         emptyG.style.display = 'none';
         gastos.slice(0, 20).forEach(g => {
           const tr = document.createElement('tr');
+          const pago = isPago(g);
+          const statusBadge = pago ? '<span class="badge-pago">Pago</span>' : '<span class="badge-pendente">Pendente</span>';
+          const valorNum = valorGasto(g);
+          const btnPago = pago ? '' : '<button type="button" class="btn-pago" data-gasto-id="' + (g.id || '') + '" data-gasto-valor="' + valorNum + '" data-gasto-tabela="Gastos">Marcar como pago</button>';
+          const btnApagarGasto = '<button type="button" class="btn-apagar btn-apagar-gasto" data-gasto-id="' + (g.id || '') + '">Apagar</button>';
+          const acoes = '<div class="acoes-celula"><button type="button" class="btn-alterar" data-gasto-id="' + (g.id || '') + '" data-gasto-data="' + (g.data || '') + '" data-gasto-descricao="' + (g.descricao || '').replace(/"/g, '&quot;') + '" data-gasto-categoria="' + (g.categoria || 'Outros').replace(/"/g, '&quot;') + '" data-gasto-valor="' + valorNum + '">Alterar</button>' + btnPago + btnApagarGasto + '</div>';
           tr.innerHTML = `
-            <td>${formatarData(g.data)}</td>
-            <td>${(g.descricao || '—').toString().slice(0, 40)}</td>
-            <td>${(g.categoria || 'Outros')}</td>
-            <td class="valor-positivo">${formatarMoeda(g.valor_total)}</td>
+            <td data-label="Data">${formatarData(g.data)}</td>
+            <td data-label="Descrição">${(g.descricao || '—').toString().slice(0, 40)}</td>
+            <td data-label="Categoria">${(g.categoria || 'Outros')}</td>
+            <td class="valor-positivo" data-label="Valor">${formatarMoeda(valorNum)}</td>
+            <td data-label="Status">${statusBadge}</td>
+            <td class="td-acoes" data-label="Ações">${acoes}</td>
           `;
           tbodyG.appendChild(tr);
+          const btnPagoEl = tr.querySelector('.btn-pago');
+          if (btnPagoEl) {
+            btnPagoEl.addEventListener('click', function() {
+              marcarComoPago(this.dataset.gastoId, parseFloat(this.dataset.gastoValor) || 0, this.dataset.gastoTabela || 'Gastos');
+            });
+          }
+          const btnAlterarG = tr.querySelector('.btn-alterar');
+          if (btnAlterarG) {
+            btnAlterarG.addEventListener('click', function() {
+              abrirModalEditarGasto({
+                id: this.dataset.gastoId,
+                data: this.dataset.gastoData,
+                descricao: this.dataset.gastoDescricao,
+                categoria: this.dataset.gastoCategoria,
+                valor: this.dataset.gastoValor
+              });
+            });
+          }
+          const btnApagarG = tr.querySelector('.btn-apagar-gasto');
+          if (btnApagarG) {
+            btnApagarG.addEventListener('click', function() {
+              apagarGasto(this.dataset.gastoId);
+            });
+          }
         });
       }
 
@@ -727,18 +1508,432 @@
           const status = l.notificado
             ? '<span class="badge-notificado">Notificado</span>'
             : '<span class="badge-pendente">Pendente</span>';
+          const tituloEsc = (l.titulo || '').toString().replace(/"/g, '&quot;');
           tr.innerHTML = `
-            <td>${formatarData(l.data)}</td>
-            <td>${(l.hora || '—').toString().slice(0, 5)}</td>
-            <td>${(l.titulo || '—').toString().slice(0, 50)}</td>
-            <td>${status}</td>
+            <td data-label="Data">${formatarData(l.data)}</td>
+            <td data-label="Hora">${(l.hora || '—').toString().slice(0, 5)}</td>
+            <td data-label="Título">${(l.titulo || '—').toString().slice(0, 50)}</td>
+            <td data-label="Status">${status}</td>
+            <td class="td-acoes" data-label="Ações"><div class="acoes-celula"><button type="button" class="btn-alterar" data-lembrete-id="${l.id || ''}" data-lembrete-data="${l.data || ''}" data-lembrete-hora="${(l.hora || '').toString().slice(0, 5)}" data-lembrete-titulo="${tituloEsc}">Alterar</button><button type="button" class="btn-apagar" data-lembrete-id="${l.id || ''}">Apagar</button></div></td>
           `;
           tbodyL.appendChild(tr);
+          tr.querySelector('.btn-apagar').addEventListener('click', function() {
+            apagarLembrete(this.dataset.lembreteId);
+          });
+          tr.querySelector('.btn-alterar').addEventListener('click', function() {
+            abrirModalEditarLembrete({
+              id: this.dataset.lembreteId,
+              data: this.dataset.lembreteData,
+              hora: this.dataset.lembreteHora,
+              titulo: this.dataset.lembreteTitulo
+            });
+          });
         });
       }
     }
 
+    async function marcarComoPago(gastoId, valor, tabelaNome) {
+      if (!gastoId || !clientSupabase || !window._userId) return;
+      try {
+        for (const tbl of ['Gastos']) {
+          let r = await clientSupabase.from(tbl).update({ pago: true }).eq('id', gastoId).select();
+          if (r && r.error && (r.error.code === 'PGRST204' || (r.error.message || '').toLowerCase().includes("'pago'")) ) {
+            r = await clientSupabase.from(tbl).update({ 'Pago': true }).eq('id', gastoId).select();
+          }
+          if (r && !r.error && r.data && r.data.length) break;
+        }
+        const userId = window._userId;
+        const celularPerfil = userId.includes('@') ? [userId] : [userId, userId + '@s.whatsapp.net'];
+        // Atualizar saldo na linha de resumo da tabela Gastos (não existe tabela Perfil)
+        let resumoRow = null;
+        for (const tbl of ['Gastos']) {
+          const r = await clientSupabase.from(tbl).select('*').eq('descricao', DESC_RESUMO_GASTOS).in('celular', celularPerfil).limit(5);
+          if (r && !r.error && r.data && r.data.length) {
+            resumoRow = r.data.find(x => soDigitos((x.celular || x.Celular) || '') === soDigitos(userId)) || r.data[0];
+            resumoRow._tabela = tbl;
+            break;
+          }
+        }
+        const saldoAtual = resumoRow ? (Number(resumoRow[COL_SALDO] ?? resumoRow['SALDO DISPONÍVEL']) || 0) : 0;
+        const gastosPagosAtual = resumoRow ? (Number(resumoRow['GASTOS PAGOS']) || 0) : 0;
+        const gastosPendentesAtual = resumoRow ? (Number(resumoRow['GASTOS PENDENTES']) || 0) : 0;
+        const novoSaldo = saldoAtual - valor;
+        const novoGastosPagos = gastosPagosAtual + valor;
+        const novoGastosPendentes = Math.max(0, gastosPendentesAtual - valor);
+        const tbl = resumoRow ? (resumoRow._tabela || 'Gastos') : 'Gastos';
+        const payloadSpace = {
+          'SALDO DISPONÍVEL': String(novoSaldo),
+          'GASTOS PAGOS': String(novoGastosPagos),
+          'GASTOS PENDENTES': String(novoGastosPendentes)
+        };
+        if (resumoRow && resumoRow.id) {
+          await clientSupabase.from(tbl).update(payloadSpace).eq('id', resumoRow.id).select();
+        }
+        carregarDados();
+      } catch (e) {
+        console.error('Erro ao marcar como pago:', e);
+        alert('Erro ao marcar como pago. Verifique o console (F12).');
+      }
+    }
+
+    async function apagarGasto(gastoId) {
+      if (!gastoId || !clientSupabase) return;
+      if (!confirm('Apagar este gasto? Ele será removido do banco de dados.')) return;
+      try {
+        let ok = false;
+        for (const tbl of ['gastos', 'Gastos']) {
+          const r = await clientSupabase.from(tbl).delete().eq('id', gastoId);
+          if (r && !r.error) { ok = true; break; }
+        }
+        if (ok) carregarDados();
+        else alert('Não foi possível apagar o gasto. Verifique políticas RLS (DELETE para anon).');
+      } catch (e) {
+        console.error('Erro ao apagar gasto:', e);
+        alert('Erro ao apagar. Verifique o console (F12).');
+      }
+    }
+
+    async function apagarLembrete(lembreteId) {
+      if (!lembreteId || !clientSupabase) return;
+      if (!confirm('Apagar este lembrete? Ele será removido do banco de dados.')) return;
+      try {
+        let ok = false;
+        for (const tbl of ['lembretes', 'Lembretes']) {
+          const r = await clientSupabase.from(tbl).delete().eq('id', lembreteId);
+          if (r && !r.error) { ok = true; break; }
+        }
+        if (ok) carregarDados();
+        else alert('Não foi possível apagar. Verifique políticas RLS (DELETE para anon).');
+      } catch (e) {
+        console.error('Erro ao apagar lembrete:', e);
+        alert('Erro ao apagar. Verifique o console (F12).');
+      }
+    }
+
     $('periodo').addEventListener('change', carregarDados);
+
+    // Submenu Últimos gastos: Pagos (verde), Pendentes (amarelo), Lupa (azul)
+    if ($('filtro-pagos')) {
+      $('filtro-pagos').addEventListener('click', function() {
+        filtroGastosStatus = filtroGastosStatus === 'pagos' ? 'todos' : 'pagos';
+        aplicarFiltroGastos();
+      });
+    }
+    if ($('filtro-pendentes')) {
+      $('filtro-pendentes').addEventListener('click', function() {
+        filtroGastosStatus = filtroGastosStatus === 'pendentes' ? 'todos' : 'pendentes';
+        aplicarFiltroGastos();
+      });
+    }
+    if ($('filtro-lupa')) {
+      $('filtro-lupa').addEventListener('click', function() {
+        const input = $('busca-gastos');
+        if (!input) return;
+        const visivel = input.style.display !== 'none';
+        input.style.display = visivel ? 'none' : '';
+        if (!visivel) {
+          input.focus();
+          input.value = filtroGastosTexto;
+        } else {
+          filtroGastosTexto = '';
+          input.value = '';
+          aplicarFiltroGastos();
+        }
+      });
+    }
+    if ($('busca-gastos')) {
+      $('busca-gastos').addEventListener('input', function() {
+        filtroGastosTexto = this.value;
+        aplicarFiltroGastos();
+      });
+      $('busca-gastos').addEventListener('keydown', function(ev) {
+        if (ev.key === 'Escape') {
+          this.blur();
+          this.style.display = 'none';
+          filtroGastosTexto = '';
+          this.value = '';
+          aplicarFiltroGastos();
+        }
+      });
+    }
+
+    // Submenu Lembretes: Notificados (verde), Pendentes (amarelo), Lupa (azul)
+    if ($('filtro-notificados-lemb')) {
+      $('filtro-notificados-lemb').addEventListener('click', function() {
+        filtroLembretesStatus = filtroLembretesStatus === 'notificados' ? 'todos' : 'notificados';
+        aplicarFiltroLembretes();
+      });
+    }
+    if ($('filtro-pendentes-lemb')) {
+      $('filtro-pendentes-lemb').addEventListener('click', function() {
+        filtroLembretesStatus = filtroLembretesStatus === 'pendentes' ? 'todos' : 'pendentes';
+        aplicarFiltroLembretes();
+      });
+    }
+    if ($('filtro-lupa-lemb')) {
+      $('filtro-lupa-lemb').addEventListener('click', function() {
+        const input = $('busca-lembretes');
+        if (!input) return;
+        const visivel = input.style.display !== 'none';
+        input.style.display = visivel ? 'none' : '';
+        if (!visivel) {
+          input.focus();
+          input.value = filtroLembretesTexto;
+        } else {
+          filtroLembretesTexto = '';
+          input.value = '';
+          aplicarFiltroLembretes();
+        }
+      });
+    }
+    if ($('busca-lembretes')) {
+      $('busca-lembretes').addEventListener('input', function() {
+        filtroLembretesTexto = this.value;
+        aplicarFiltroLembretes();
+      });
+      $('busca-lembretes').addEventListener('keydown', function(ev) {
+        if (ev.key === 'Escape') {
+          this.blur();
+          this.style.display = 'none';
+          filtroLembretesTexto = '';
+          this.value = '';
+          aplicarFiltroLembretes();
+        }
+      });
+    }
+
+    // Modal Adicionar saldo
+    function abrirModalSaldo() {
+      const el = $('modal-saldo-overlay');
+      const input = $('input-valor-saldo');
+      if (el && input) {
+        input.value = '';
+        el.classList.add('ativo');
+        input.focus();
+      }
+    }
+    function fecharModalSaldo() {
+      const el = $('modal-saldo-overlay');
+      if (el) el.classList.remove('ativo');
+    }
+    function parseValorSaldo(s) {
+      if (s == null || String(s).trim() === '') return NaN;
+      const limpo = String(s).trim().replace(/\./g, '').replace(',', '.');
+      return parseFloat(limpo);
+    }
+    async function adicionarSaldo() {
+      const input = $('input-valor-saldo');
+      const valor = input ? parseValorSaldo(input.value) : NaN;
+      if (isNaN(valor) || valor <= 0) {
+        alert('Digite um valor válido (ex: 100 ou 100,00).');
+        return;
+      }
+      if (!clientSupabase || !window._userId) {
+        alert('Sessão inválida. Recarregue a página com seu link pessoal.');
+        return;
+      }
+      const userId = window._userId;
+      const celularPerfil = userId.includes('@') ? [userId] : [userId, userId + '@s.whatsapp.net'];
+      try {
+        // Saldo fica na tabela Gastos (linha de resumo). Não existe tabela Perfil.
+        let resumoRow = null;
+        for (const tbl of ['Gastos']) {
+          const r = await clientSupabase.from(tbl).select('*').eq('descricao', DESC_RESUMO_GASTOS).in('celular', celularPerfil).limit(1);
+          if (r && !r.error && r.data && r.data.length) {
+            resumoRow = r.data.find(x => soDigitos((x.celular || x.Celular) || '') === soDigitos(userId)) || r.data[0];
+            resumoRow._tabela = tbl;
+            break;
+          }
+        }
+        let saldoAtual = 0;
+        if (resumoRow) {
+          const v = resumoRow[COL_SALDO] ?? resumoRow['SALDO DISPONÍVEL'];
+          if (v != null) saldoAtual = Number(v) || 0;
+        }
+        const novoSaldo = saldoAtual + valor;
+        const payloadSnake = { [COL_SALDO]: novoSaldo };
+        const payloadSpace = { 'SALDO DISPONÍVEL': String(novoSaldo) };
+        const hoje = new Date().toISOString().split('T')[0];
+        if (resumoRow && resumoRow.id) {
+          const tbl = resumoRow._tabela || 'Gastos';
+          let ok = await clientSupabase.from(tbl).update(payloadSpace).eq('id', resumoRow.id).select();
+          if (tbl === 'gastos' && ok && ok.error && (ok.error.message || '').toLowerCase().includes('column')) {
+            ok = await clientSupabase.from(tbl).update(payloadSnake).eq('id', resumoRow.id).select();
+          }
+          if (ok && !ok.error) {
+            fecharModalSaldo();
+            carregarDados();
+            return;
+          }
+        } else {
+          const variantesInsert = [
+            { celular: userId, data: hoje, descricao: DESC_RESUMO_GASTOS, valor_total: 0, 'SALDO DISPONÍVEL': String(novoSaldo) },
+            { celular: userId, data: hoje, descricao: DESC_RESUMO_GASTOS, valor_total: 0, categoria: 'Resumo', 'SALDO DISPONÍVEL': String(novoSaldo) },
+            { celular: userId, data: hoje, descricao: DESC_RESUMO_GASTOS, [COL_SALDO]: novoSaldo },
+            { Celular: userId, Data: hoje, Descricao: DESC_RESUMO_GASTOS, Valor_total: 0, 'SALDO DISPONÍVEL': String(novoSaldo) },
+            { celular: userId, data: hoje, descricao: DESC_RESUMO_GASTOS, valor_total: 0 }
+          ];
+          for (const tbl of ['Gastos']) {
+            for (let i = 0; i < variantesInsert.length; i++) {
+              let row = variantesInsert[i];
+              if (i === 4) row = { ...row, 'SALDO DISPONÍVEL': String(novoSaldo) };
+              const ins = await clientSupabase.from(tbl).insert(row).select();
+              if (ins && !ins.error) {
+                fecharModalSaldo();
+                carregarDados();
+                return;
+              }
+              if (ins && ins.error) console.warn('FinLeve insert saldo:', tbl, Object.keys(row), ins.error.message);
+            }
+          }
+        }
+        alert('Não foi possível salvar o saldo. Verifique no Console (F12) a mensagem do Supabase e se a tabela Gastos tem coluna de saldo (ex: SALDO DISPONÍVEL).');
+      } catch (e) {
+        console.error('Erro ao adicionar saldo:', e);
+        alert('Erro ao adicionar saldo. Verifique o console (F12).');
+      }
+    }
+    function soDigitos(s) {
+      if (s == null) return '';
+      return String(s).replace(/\D/g, '');
+    }
+
+    if ($('btn-adicionar-saldo')) $('btn-adicionar-saldo').addEventListener('click', abrirModalSaldo);
+    if ($('btn-modal-saldo-cancelar')) $('btn-modal-saldo-cancelar').addEventListener('click', fecharModalSaldo);
+    if ($('modal-saldo-overlay')) {
+      $('modal-saldo-overlay').addEventListener('click', function(ev) {
+        if (ev.target === this) fecharModalSaldo();
+      });
+    }
+    if ($('btn-modal-saldo-confirmar')) $('btn-modal-saldo-confirmar').addEventListener('click', adicionarSaldo);
+    if ($('input-valor-saldo')) {
+      $('input-valor-saldo').addEventListener('keydown', function(ev) {
+        if (ev.key === 'Enter') adicionarSaldo();
+        if (ev.key === 'Escape') fecharModalSaldo();
+      });
+    }
+
+    // ---------- Modal Editar Gasto ----------
+    function dataParaInputDate(s) {
+      if (!s) return '';
+      const d = new Date(s);
+      if (isNaN(d.getTime())) return '';
+      const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, '0'), day = String(d.getDate()).padStart(2, '0');
+      return y + '-' + m + '-' + day;
+    }
+    function abrirModalEditarGasto(g) {
+      $('editar-gasto-id').value = g.id || '';
+      $('editar-gasto-data').value = dataParaInputDate(g.data);
+      $('editar-gasto-descricao').value = (g.descricao || '').replace(/&quot;/g, '"');
+      $('editar-gasto-categoria').value = (g.categoria || '').replace(/&quot;/g, '"');
+      $('editar-gasto-valor').value = (g.valor != null && g.valor !== '') ? Number(g.valor).toFixed(2).replace('.', ',') : '';
+      $('modal-editar-gasto-overlay').classList.add('ativo');
+      $('editar-gasto-descricao').focus();
+    }
+    function fecharModalEditarGasto() {
+      $('modal-editar-gasto-overlay').classList.remove('ativo');
+    }
+    async function salvarGastoEditado() {
+      const id = $('editar-gasto-id').value.trim();
+      const dataVal = $('editar-gasto-data').value.trim();
+      const descricao = $('editar-gasto-descricao').value.trim();
+      const categoria = $('editar-gasto-categoria').value.trim() || 'Outros';
+      const valorStr = ($('editar-gasto-valor').value || '').trim().replace(/\./g, '').replace(',', '.');
+      const valor = parseFloat(valorStr);
+      if (!id || !clientSupabase) return;
+      if (!descricao) { alert('Informe a descrição.'); return; }
+      if (isNaN(valor) || valor < 0) { alert('Informe um valor válido.'); return; }
+      if (!dataVal) { alert('Informe a data.'); return; }
+      const idNum = /^\d+$/.test(id) ? parseInt(id, 10) : id;
+      try {
+        const variantes = [
+          { data: dataVal, descricao, categoria, valor_total: valor },
+          { data: dataVal, descricao, categoria, valor },
+          { Data: dataVal, Descricao: descricao, Categoria: categoria, Valor_total: valor },
+          { Data: dataVal, Descricao: descricao, Categoria: categoria, Valor: valor }
+        ];
+        let sucesso = false;
+        for (const tbl of ['Gastos', 'gastos']) {
+          if (sucesso) break;
+          for (const payload of variantes) {
+            const r = await clientSupabase.from(tbl).update(payload).eq('id', idNum).select();
+            if (r && !r.error && r.data && r.data.length > 0) {
+              sucesso = true;
+              break;
+            }
+            if (r && r.error) console.warn('FinLeve update gasto:', tbl, Object.keys(payload), r.error.message);
+          }
+        }
+        if (sucesso) {
+          fecharModalEditarGasto();
+          carregarDados();
+        } else {
+          alert('Não foi possível atualizar o gasto no Supabase. Verifique políticas RLS (UPDATE) e nomes das colunas (data, descricao, categoria, valor_total). Abra F12 → Console para detalhes.');
+        }
+      } catch (e) {
+        console.error('Erro ao editar gasto:', e);
+        alert('Erro ao salvar: ' + (e.message || e) + '. Verifique o console (F12).');
+      }
+    }
+    if ($('btn-editar-gasto-cancelar')) $('btn-editar-gasto-cancelar').addEventListener('click', fecharModalEditarGasto);
+    if ($('btn-editar-gasto-confirmar')) $('btn-editar-gasto-confirmar').addEventListener('click', salvarGastoEditado);
+    if ($('modal-editar-gasto-overlay')) {
+      $('modal-editar-gasto-overlay').addEventListener('click', function(ev) { if (ev.target === this) fecharModalEditarGasto(); });
+    }
+
+    // ---------- Modal Editar Lembrete ----------
+    function abrirModalEditarLembrete(l) {
+      $('editar-lembrete-id').value = l.id || '';
+      $('editar-lembrete-data').value = dataParaInputDate(l.data);
+      $('editar-lembrete-hora').value = (l.hora || '').toString().slice(0, 5);
+      $('editar-lembrete-titulo').value = (l.titulo || '').replace(/&quot;/g, '"');
+      $('modal-editar-lembrete-overlay').classList.add('ativo');
+      $('editar-lembrete-titulo').focus();
+    }
+    function fecharModalEditarLembrete() {
+      $('modal-editar-lembrete-overlay').classList.remove('ativo');
+    }
+    async function salvarLembreteEditado() {
+      const id = $('editar-lembrete-id').value.trim();
+      const dataVal = $('editar-lembrete-data').value.trim();
+      const hora = ($('editar-lembrete-hora').value || '').trim().slice(0, 5) || null;
+      const titulo = $('editar-lembrete-titulo').value.trim();
+      if (!id || !clientSupabase) return;
+      if (!titulo) { alert('Informe o título do lembrete.'); return; }
+      if (!dataVal) { alert('Informe a data.'); return; }
+      // Supabase: tabela "Lembretes" (L maiúsculo), colunas em minúsculas (data, hora, titulo), id é uuid (string)
+      try {
+        const payload = { data: dataVal, hora, titulo };
+        const r = await clientSupabase.from('Lembretes').update(payload).eq('id', id).select();
+        if (r && !r.error && r.data && r.data.length > 0) {
+          fecharModalEditarLembrete();
+          carregarDados();
+        } else {
+          if (r && r.error) console.error('FinLeve update lembrete:', r.error.message);
+          alert(r && r.error ? r.error.message : 'Não foi possível atualizar o lembrete. Verifique políticas RLS (UPDATE) para a tabela Lembretes.');
+        }
+      } catch (e) {
+        console.error('Erro ao editar lembrete:', e);
+        alert('Erro ao salvar: ' + (e.message || e) + '. Verifique o console (F12).');
+      }
+    }
+    if ($('btn-editar-lembrete-cancelar')) $('btn-editar-lembrete-cancelar').addEventListener('click', fecharModalEditarLembrete);
+    if ($('btn-editar-lembrete-confirmar')) $('btn-editar-lembrete-confirmar').addEventListener('click', salvarLembreteEditado);
+    if ($('modal-editar-lembrete-overlay')) {
+      $('modal-editar-lembrete-overlay').addEventListener('click', function(ev) { if (ev.target === this) fecharModalEditarLembrete(); });
+    }
+
+    // Menu de navegação: destaque suave ao rolar
+    document.querySelectorAll('.nav-menu-item').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        const secao = document.getElementById((this.getAttribute('data-secao') || '').trim());
+        if (secao) {
+          secao.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.querySelectorAll('.nav-menu-item').forEach(function(l) { l.classList.remove('ativo'); });
+          this.classList.add('ativo');
+        }
+      });
+    });
 
     // Se estiver abrindo por file://, o navegador bloqueia acesso ao Supabase (CORS). Mostrar aviso.
     if (window.location.protocol === 'file:') {
